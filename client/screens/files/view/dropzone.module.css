@@ -1,0 +1,13 @@
+.dropzone-container {
+  display: none;
+  position: absolute !important;
+
+  background-color: var(--mantine-color-dark-6);
+
+  width: 100%;
+  height: 100%;
+}
+
+.dropzone-container.visible {
+  display: block;
+}

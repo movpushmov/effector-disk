@@ -1,0 +1,15 @@
+.modal {
+  & :global(.mantine-Modal-content) {
+    height: 100vh;
+  }
+
+  & :global(.mantine-Modal-body) {
+    width: 100%;
+    height: 100%;
+
+    padding-top: var(--mantine-spacing-md);
+
+    display: flex;
+    justify-content: center;
+  }
+}

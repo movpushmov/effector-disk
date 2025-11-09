@@ -1,0 +1,6 @@
+.filename {
+  width: 100%;
+  line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

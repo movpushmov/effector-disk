@@ -1,0 +1,48 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../server/libs/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String @id @default(uuid())
+  username String
+  password String
+
+  files File[]
+}
+
+enum FileType {
+  FILE
+  DIR
+}
+
+model File {
+  id              String @unique
+  filename         String
+  path            String
+  fsname          String?
+  mimetype        String?
+  size            Int?
+  thumbnailPath   String?
+  type            FileType
+
+  ownerId String
+  owner User @relation(fields: [ownerId], references: [id])
+
+  parentId  String?
+  parent    File?   @relation("FileRelation", fields: [parentId], references: [id])
+  children  File[]  @relation("FileRelation")
+
+  createdAt DateTime @default(now())
+}

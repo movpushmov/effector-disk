@@ -1,0 +1,17 @@
+{
+  "$schema": "https://swc.rs/schema.json",
+  "jsc": {
+    "experimental": {
+      "plugins": [
+        [
+          "@effector/swc-plugin",
+          {
+            "addLoc": true,
+            "factories": ["@argon-router/core", "@effector-reform/core"],
+            "hmr": "es"
+          }
+        ]
+      ]
+    }
+  }
+}
